@@ -1,0 +1,50 @@
+[
+    {
+        "ID_Cinema": "1",
+        "Area": "Moscow",
+        "Address": "st. Okhotny",
+        "Phone_Number": "84956424141",
+        "Number_Halls": "17",
+        "Cinema_Name": "Moscow"
+    },
+    {
+        "ID_Cinema": "2",
+        "Area": "Moscow",
+        "Address": "st.Big Ovchinnikovsky",
+        "Phone_Number": "84955102888",
+        "Number_Halls": "6",
+        "Cinema_Name": "Five Stars on Novokuznetsk"
+    },
+    {
+        "ID_Cinema": "3",
+        "Area": "Moscow",
+        "Address": "Kotelnicheskaya Emb.",
+        "Phone_Number": "84959154353",
+        "Number_Halls": "1",
+        "Cinema_Name": "Illusion"
+    },
+    {
+        "ID_Cinema": "4",
+        "Area": "Moscow",
+        "Address": "The Red Square",
+        "Phone_Number": "84956203062",
+        "Number_Halls": "2",
+        "Cinema_Name": "GUM"
+    },
+    {
+        "ID_Cinema": "5",
+        "Area": "Moscow",
+        "Address": "st. Bakhrushin",
+        "Phone_Number": "84959169169",
+        "Number_Halls": "6",
+        "Cinema_Name": "Five stars on Paveletskaya"
+    },
+    {
+        "ID_Cinema": "6",
+        "Area": "Moscow",
+        "Address": "Komsomolsky Avenue",
+        "Phone_Number": "88007000111",
+        "Number_Halls": "4",
+        "Cinema_Name": "Formula Cinema Horizon"
+    }
+]
