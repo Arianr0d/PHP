@@ -1,0 +1,117 @@
+body {
+  background: black;
+  -webkit-background-size: cover;
+  background-attachment: fixed;
+  background-size: cover;
+  margin: 0;
+}
+
+.intro {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+.video {
+  position: relative;
+  padding-bottom: 56.25%;
+}
+
+.video_media {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.form {
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.hp {
+  margin: 55px 60px 40px 60px;
+  padding: 0;
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  text-transform: uppercase;
+  font-family: Broadway;
+}
+
+.textarea_ {
+  height: 100px;
+  width: 73%;
+  border: 1px solid white;
+  background: transparent;
+  resize: none;
+  border-radius: 0;
+
+  font-size: 20px;
+  padding: 15px;
+  color: white;
+}
+
+.group {
+  margin: 15px 40px;
+  text-align: center;
+}
+
+.inp {
+  padding: 15px;
+  width: 80%;
+  color: white;
+  font-size: 18px;
+  background: none;
+  outline: none;
+  border: 1px solid white;
+  box-sizing: border-box;
+}
+
+.group input[type="login"]:focus,
+.group input[type="password"]:focus {
+  border: 1px solid #6dd5ed;
+  box-shadow: 0 0 0;
+}
+
+.group button {
+  padding: 12px;
+  width: 80%;
+  color: white;
+  margin-bottom: 35px;
+  margin-top: 20px;
+  background: #2193b0;
+  border: 1px solid rgba(0, 0, 0, 0.45);
+  text-transform: uppercase;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.5s ease 0s;
+}
+
+.group button[type="submit"]:hover {
+  background: #bdc3c7;
+  border: 1px solid white;
+}
+
+.group button[type="submit"]:focus {
+  background: #aa4b6b;
+  border-radius: 0;
+  border: 1px solid white;
+  outline: none;
+}
+
+.msg {
+  display: flex;
+  justify-content: center;
+  color: #c84c4c;
+  font-size: 20px;
+}
+
+.error {
+  border: 1px solid red;
+  box-shadow: 0 0 5px #c84c4c;
+}
