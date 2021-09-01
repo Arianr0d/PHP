@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
+
+<head>
+   <meta charset="UTF-8">
+   <title>forma-send</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+   <style>
+      .valid {
+         border: 1px solid green;
+      }
+
+      .invalid {
+         border: 1px solid red;
+      }
+   </style>
+
+   <div class="intro">
+      <div class="video">
+         <video class="video_media" src="image/A Smoky Mountains in Sao Vicente.mp4" autoplay muted loop></video>
+      </div>
+   </div>
+
+   <form id="start_form" class="form">
+      <h1 id="h1" class="hp">Форма обратной связи</h1>
+      <div class="group">
+         <input type="text" class="inp inp_form" data-rule="name" name="surname" placeholder="Фамилия">
+      </div>
+      <div class="group">
+         <input type="text" class="inp inp_form" data-rule="name" name="name" placeholder="Имя">
+      </div>
+      <div class="group">
+         <input type="text" class="inp inp_form" data-rule="name" name="middleName" placeholder="Отчество">
+      </div>
+      <div class="group">
+         <input type="email" class="inp inp_form" data-rule="email" name="email" placeholder="E-mail">
+      </div>
+      <div class="group">
+         <input type="text" class="inp inp_form" data-rule="number_phone" name="numberPhone" placeholder="Номер телефона">
+      </div>
+      <div class="group">
+         <textarea name="comment" type="text" class="textarea_ inp_form" data-rule="comment" placeholder="Комментарий"></textarea>
+      </div>
+      <div class="group">
+         <button type="submit" class="btn">
+            Отправить
+         </button>
+      </div>
+   </form>
+
+   <script src="scripts/main.js"></script>
+</body>
+
+</html>
