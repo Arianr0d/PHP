@@ -1,3 +1,5 @@
+import {counts} from './timer.js'
+
 const form = document.getElementById('start_form');
 form.addEventListener('submit', formSend);
 
@@ -70,7 +72,7 @@ function Check(inp) {
 
 // отправка формы при клике на кнопку "отправить"
 async function formSend(e) {
-    e.preventDefault();
+   e.preventDefault();
 
    if(reg_name.test(inp_text[0].value) && reg_name.test(inp_text[1].value) && reg_name.test(inp_text[2].value) &&
         reg_email.test(inp_text[3].value) && reg_phone.test(inp_text[4].value) && reg_comment.test(inp_text[5].value)) 
@@ -96,7 +98,10 @@ async function formSend(e) {
             document.getElementById('numberPhone').innerText = json['numberPhone'];
             document.getElementById('comment').innerText = json['comment'];
 
-            //form.reset();
+            counts();
+            setInterval(counts, 1000);
+
+            form.reset();
          })
    } 
    else {

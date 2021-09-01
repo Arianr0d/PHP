@@ -3,6 +3,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+// подключение php-скрипта с подключением к бд
+require_once 'connect.php';
+
 require 'phpmailer/src/PHPMailer.php';
 require 'phpmailer/src/Exception.php';
 require 'phpmailer/src/SMTP.php';
@@ -74,6 +77,19 @@ $response['middleName'] = $_POST['middleName'];
 $response['email'] = $_POST['email'];
 $response['numberPhone'] = $_POST['numberPhone'];
 $response['comment'] = $_POST['comment'];
+
+$name = $_POST['name'];
+$surname = $_POST['surname'];
+$middlename = $_POST['middleName'];
+$email = $_POST['email'];
+$numberphone = $_POST['numberPhone'];
+$connect = $_POST['comment'];
+$datasend = date("Y-m-d H:i:s");
+
+// запрос на добавление в бд нового пользователя
+mysqli_query($connecting, "INSERT INTO `formsend` (`IdUser`, `NameUser`, `SurnameUser`, `MiddlenameUser`, `EmailUser`, `NumberPhoneUser`, `CommentUser`, `DateSend`) VALUES (NULL, '$name', '$surname', '$middlename', '$email', '$numberphone', '$connect', '$datasend')");
+
+//mysqli_query($connect, "INSERT INTO `formsend` (`ID_user`, `Name_user`, `Surname_user`, `Middlename_user`, `Email_user`, `NumberPhone_user`, `Comment_user`, `Date_send`) VALUES (NULL, '$name', '$surname', '$middlename', '$email', '$numberphone', '$connect', '$datasend')");
 
 header('Content-type: application/json');
 echo json_encode($response);
