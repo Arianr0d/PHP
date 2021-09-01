@@ -87,7 +87,7 @@ async function formSend(e) {
         }).then(response => response.json())
         .then((json) => {
 
-            console.log('wfewfewfwe')
+            console.log(json['bd'])
             document.getElementById('start_form').hidden = true;
             document.getElementById('second_form').hidden = false;
 

@@ -86,10 +86,12 @@ $numberphone = $_POST['numberPhone'];
 $connect = $_POST['comment'];
 $datasend = date("Y-m-d H:i:s");
 
+$check_user = mysqli_query($connecting, "SELECT * FROM `formsend` WHERE `EmailUser` = '$email'");
+$row = $check_user->;
+$response['bd'] = $row;
+
 // запрос на добавление в бд нового пользователя
 mysqli_query($connecting, "INSERT INTO `formsend` (`IdUser`, `NameUser`, `SurnameUser`, `MiddlenameUser`, `EmailUser`, `NumberPhoneUser`, `CommentUser`, `DateSend`) VALUES (NULL, '$name', '$surname', '$middlename', '$email', '$numberphone', '$connect', '$datasend')");
-
-//mysqli_query($connect, "INSERT INTO `formsend` (`ID_user`, `Name_user`, `Surname_user`, `Middlename_user`, `Email_user`, `NumberPhone_user`, `Comment_user`, `Date_send`) VALUES (NULL, '$name', '$surname', '$middlename', '$email', '$numberphone', '$connect', '$datasend')");
 
 header('Content-type: application/json');
 echo json_encode($response);
