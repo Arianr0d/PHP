@@ -31,17 +31,17 @@ $mail->SMTPSecure = 'ssl';
 // от кого письмо
 $mail->setFrom('PHP-TEST-MAILER@yandex.ru', 'Форма обратной связи');
 // адресат
-$mail->addAddress('Killrad.St@yandex.ru');
+$mail->addAddress('tatyana.comolyh@gmail.com');
 // Тема письма
 $mail->Subject = 'Форма обратной связи';
 
 $body = '';
 // содержимое письма
-if (trim(!empty($_POST['name']))) {
-   $body .= '<p><strong>Имя:</strong> ' . $_POST['name'] . '</p>';
-}
 if (trim(!empty($_POST['surname']))) {
    $body .= '<p><strong>Фамилия:</strong> ' . $_POST['surname'] . '</p>';
+}
+if (trim(!empty($_POST['name']))) {
+   $body .= '<p><strong>Имя:</strong> ' . $_POST['name'] . '</p>';
 }
 if (trim(!empty($_POST['middleName']))) {
    $body .= '<p><strong>Отчество:</strong> ' . $_POST['middleName'] . '</p>';
@@ -66,7 +66,14 @@ if (!$mail->send()) {
 }
 
 //формирование json-файла
-$response = ['message' => $message];
+$response = array();
+$response['message'] = $message;
+$response['name'] = $_POST['name'];
+$response['surname'] = $_POST['surname'];
+$response['middleName'] = $_POST['middleName'];
+$response['email'] = $_POST['email'];
+$response['numberPhone'] = $_POST['numberPhone'];
+$response['comment'] = $_POST['comment'];
 
 header('Content-type: application/json');
 echo json_encode($response);

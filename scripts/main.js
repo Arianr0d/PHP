@@ -1,3 +1,6 @@
+const form = document.getElementById('start_form');
+form.addEventListener('submit', formSend);
+
 // регулярные выражения для проверки почты, номера телефона, ФИО и комментария
 let reg_phone = /^(\+7|7|8)?[\s\-]?\(?[489][0-9]{2}\)?[\s\-]?[0-9]{3}[\s\-]?[0-9]{2}[\s\-]?[0-9]{2}$/;
 let reg_email = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+.+.[A-Za-z]{2,4}$/;
@@ -66,35 +69,40 @@ function Check(inp) {
 }
 
 // отправка формы при клике на кнопку "отправить"
-document.getElementsByClassName('btn')[0].onclick = function (e) {
+async function formSend(e) {
     e.preventDefault();
 
-    if(reg_name.test(inp_text[0].value) && reg_name.test(inp_text[1].value) && reg_name.test(inp_text[2].value) &&
-        reg_email.test(inp_text[3].value) && reg_phone.test(inp_text[4].value) && reg_comment.test(inp_text[5].value)) {
-
-        //document.getElementsByClassName('form')[0].classList.add('_sending');
-
+   if(reg_name.test(inp_text[0].value) && reg_name.test(inp_text[1].value) && reg_name.test(inp_text[2].value) &&
+        reg_email.test(inp_text[3].value) && reg_phone.test(inp_text[4].value) && reg_comment.test(inp_text[5].value)) 
+   {
+        console.log('asasdad')
         // отправка формы методом POST в 'sendmail'     
-        let formData = new FormData(document.getElementById("start_form"));
-        let response = fetch('sendmail.php', {
+        let formData = new FormData(form);
+
+         fetch('../sendmail.php', {
             method: 'POST',
             body: formData
-        });
+        }).then(response => response.json())
+        .then((json) => {
 
-        // проверка отправки формы
-        if(response.ok) {
-            let result = response.json();
-            alert(result.message);
-            inp_text.reset();
-            window.location.href = "/formsend.html"
-        }
-        else {
-            alert('Произошла ошибка');
-        }
-    } else {
-        for(let i=0; i < inp_text.length; i++) {
-            Check(inp_text[i]);
-        }
-        alert('Форма не отправлена! \nПожалуйста, проверьте введённые данные!');
-    }
-};
+            console.log('wfewfewfwe')
+            document.getElementById('start_form').hidden = true;
+            document.getElementById('second_form').hidden = false;
+
+            document.getElementById('name').innerText = json['name'];
+            document.getElementById('surname').innerText = json['surname'];
+            document.getElementById('middleName').innerText = json['middleName'];
+            document.getElementById('email').innerText = json['email'];
+            document.getElementById('numberPhone').innerText = json['numberPhone'];
+            document.getElementById('comment').innerText = json['comment'];
+
+            //form.reset();
+         })
+   } 
+   else {
+      for(let i=0; i < inp_text.length; i++) {
+         Check(inp_text[i]);
+      }
+      alert('Форма не отправлена! \nПожалуйста, проверьте введённые данные!');
+   }
+}
