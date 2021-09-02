@@ -1,4 +1,4 @@
-import {counts} from './timer.js'
+//import {counts} from './timer.js'
 
 const form = document.getElementById('start_form');
 form.addEventListener('submit', formSend);
@@ -77,7 +77,6 @@ async function formSend(e) {
    if(reg_name.test(inp_text[0].value) && reg_name.test(inp_text[1].value) && reg_name.test(inp_text[2].value) &&
         reg_email.test(inp_text[3].value) && reg_phone.test(inp_text[4].value) && reg_comment.test(inp_text[5].value)) 
    {
-        console.log('asasdad')
         // отправка формы методом POST в 'sendmail'     
         let formData = new FormData(form);
 
@@ -86,22 +85,33 @@ async function formSend(e) {
             body: formData
         }).then(response => response.json())
         .then((json) => {
+            if(json['result'] == 'wait') {
+               document.getElementById('start_form').hidden = false;
+               document.getElementById('second_form').hidden = true;
+               document.getElementById('time_main').hidden = false;
 
-            console.log(json['bd'])
-            document.getElementById('start_form').hidden = true;
-            document.getElementById('second_form').hidden = false;
+               document.getElementById('timer').innerText = json['status'];
+               document.getElementById('time').innerText = '';
+               form.reset();
+            }
+            else {
+               //console.log(json['bd'])
+               document.getElementById('start_form').hidden = true;
+               document.getElementById('second_form').hidden = false;
 
-            document.getElementById('name').innerText = json['name'];
-            document.getElementById('surname').innerText = json['surname'];
-            document.getElementById('middleName').innerText = json['middleName'];
-            document.getElementById('email').innerText = json['email'];
-            document.getElementById('numberPhone').innerText = json['numberPhone'];
-            document.getElementById('comment').innerText = json['comment'];
+               document.getElementById('name').innerText = json['name'];
+               document.getElementById('surname').innerText = json['surname'];
+               document.getElementById('middleName').innerText = json['middleName'];
+               document.getElementById('email').innerText = json['email'];
+               document.getElementById('numberPhone').innerText = json['numberPhone'];
+               json['numberPhone'];
+               document.getElementById('comment').innerText = json['comment'];
 
-            counts();
-            setInterval(counts, 1000);
-
-            form.reset();
+               document.getElementById('time').innerText = '01:30:00';
+               document.getElementById('timer').innerText = '';
+               document.getElementById('time_main').hidden = true;
+               form.reset();
+            }
          })
    } 
    else {

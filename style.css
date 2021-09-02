@@ -164,7 +164,7 @@ textarea[type="text"]:focus {
   border: 1px solid white;
 }
 
-.group button[type="submit"]:focus {
+.group button[type="submit"]:active {
   background: #aa4b6b;
   border-radius: 0;
   border: 1px solid white;
@@ -183,5 +183,13 @@ a {
 
 .timer {
   color: #ef0505;
-  font-size: 40px;
+  font-size: 30px;
+}
+
+.time_wait {
+  color: white;
+  font-size: 25px;
+  background: none;
+  outline: none;
+  box-sizing: border-box;
 }

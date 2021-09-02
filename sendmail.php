@@ -86,12 +86,24 @@ $numberphone = $_POST['numberPhone'];
 $connect = $_POST['comment'];
 $datasend = date("Y-m-d H:i:s");
 
-$check_user = mysqli_query($connecting, "SELECT * FROM `formsend` WHERE `EmailUser` = '$email'");
-$row = $check_user->;
-$response['bd'] = $row;
+$check_user = mysqli_query($connecting, "SELECT `DateSend`,  TIMEDIFF('01:30:00',TIMEDIFF('$datasend', `DateSend`)) AS wait FROM `formsend`
+WHERE `EmailUser` LIKE '$email' and `DateSend` >= DATE_SUB('$datasend', INTERVAL 90 MINUTE) ORDER BY `DateSend` DESC");
 
-// запрос на добавление в бд нового пользователя
-mysqli_query($connecting, "INSERT INTO `formsend` (`IdUser`, `NameUser`, `SurnameUser`, `MiddlenameUser`, `EmailUser`, `NumberPhoneUser`, `CommentUser`, `DateSend`) VALUES (NULL, '$name', '$surname', '$middlename', '$email', '$numberphone', '$connect', '$datasend')");
+$arr_date = array();
+while ($row = mysqli_fetch_assoc($check_user)) {
+   $arr_date[] = $row;
+}
+
+if (sizeof($arr_date) == 0) {
+   // запрос на добавление в бд нового пользователя
+   mysqli_query($connecting, "INSERT INTO `formsend` (`IdUser`, `NameUser`, `SurnameUser`, `MiddlenameUser`, `EmailUser`, `NumberPhoneUser`, `CommentUser`, `DateSend`) VALUES (NULL, '$name', '$surname', '$middlename', '$email', '$numberphone', '$connect', '$datasend')");
+
+   $response['result'] = 'success';
+   $response['status'] = 'nice';
+} else {
+   $response['status'] = $arr_date[0]['wait'];
+   $response['result'] = 'wait';
+}
 
 header('Content-type: application/json');
 echo json_encode($response);

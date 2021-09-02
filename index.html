@@ -1,3 +1,9 @@
+<?php
+ini_set('display_errors', 0);
+ini_set('display_startup_errors', 0);
+error_reporting(E_ALL);
+?>
+
 <!DOCTYPE html>
 <html lang="ru" xmlns="http://www.w3.org/1999/html">
 
@@ -49,6 +55,11 @@
             Отправить
          </button>
       </div>
+      <div class="group time_wait" hidden id="time_main">
+         <p3 style="font-size: 20px;">Следующая отправка возможна через</p3>
+         <br>
+         <p3 id="timer"></p3>
+      </div>
    </form>
 
    <script src="scripts/main.js" type="module"></script>
@@ -84,9 +95,8 @@
       </div>
       <div class="group_after" style="text-align: center;">
          <p3 class="info">С Вами свяжутся через</p3>
-         <span id="h" class="timer"></span>
-         <span id="m" class="timer"></span>
-         <span id="s" class="timer"></span>
+         <br>
+         <p3 id="time"></p3>
       </div>
    </form>
 </body>
