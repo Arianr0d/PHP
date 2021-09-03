@@ -27,46 +27,34 @@ session_start();
 
    <div class="form_wrapper">
       <form id="start_form" class="form_1" method="POST">
-         <h1 id="h1" class="hp">Форма регистрации</h1>
+         <h1 id="h1" class="hp">Форма с валидацией</h1>
          <div class="group">
-            <input type="login" class="inp inp_form _req _login" data-rule="login" name="login" placeholder="Логин" value="wfweif">
+            <input type="login" class="inp inp_form _req1 _login" data-rule="login" name="login" placeholder="Логин" value="wfweif">
          </div>
          <div class="group">
-            <input type="password" class="inp inp_form _req _password" data-rule="password" name="password" placeholder="Пароль">
+            <input class="inp inp_form _req1 _password" data-rule="password" name="password" placeholder="Пароль">
          </div>
-         <?php
-         if ($_SESSION['message']) {
-            echo '<p class="msg">' . $_SESSION['message'] . '</p>';
-         }
-         unset($_SESSION['message']);
-         ?>
          <div class="group">
             <p></p>
          </div>
          <div class="group">
-            <button type="submit" class="btn">Зарегистрироваться</button>
+            <button class="btn" id="btn1">Войти</button>
          </div>
       </form>
 
       <form id="second_form" class="form_2" method="POST">
-         <h1 id="h1_" class="hp">Форма регистрации</h1>
+         <h1 id="h1_" class="hp">Форма без валидации</h1>
          <div class="group">
-            <input type="login" class="inp inp_form" data-rule="login" name="login" placeholder="Логин">
+            <input type="login" class="inp inp_form _req2" data-rule="login" name="login" placeholder="Логин" value="123' or 'a'='a">
          </div>
          <div class="group">
-            <input type="password" class="inp inp_form" data-rule="password" name="password" placeholder="Пароль">
+            <input class="inp inp_form _req2" data-rule="password" name="password" placeholder="Пароль" value="ewfifjwe">
          </div>
-         <?php
-         if ($_SESSION['message']) {
-            echo '<p class="msg">' . $_SESSION['message'] . '</p>';
-         }
-         unset($_SESSION['message']);
-         ?>
          <div class="group">
             <p></p>
          </div>
          <div class="group">
-            <button type="submit" class="btn">Зарегистрироваться</button>
+            <button class="btn" id="btn2">Войти</button>
          </div>
       </form>
 

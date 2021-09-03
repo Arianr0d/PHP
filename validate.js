@@ -1,10 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
    const form = document.getElementById('start_form');
-   form.addEventListener('submit', formSend);
+   var btn1 = document.getElementById('btn1');
+   //form.addEventListener('submit', formSend);
+   //addEventListener('submit', formSend);
 
-   async function formSend(e) {
-      e.preventDefault()
+   const form2 = document.getElementById('second_form');
+   var btn2 = document.getElementById('btn2');
+   //form2.addEventListener('submit', formSend2);
+   //addEventListener('submit', formSend2)
 
+   btn1.onclick = formSend;
+   btn2.onclick = formSend2;
+
+   async function formSend() {
       let error = formValidate(form);
       
       let formData = new FormData(form);
@@ -16,8 +24,32 @@ document.addEventListener('DOMContentLoaded', function() {
             body: formData
          }).then(response => response.json())
          .then((json) => {
-            form.reset();
-            console.log(json['status'])
+            if(json['status'] == "ok") {
+               console.log(json['result'])
+               alert(json['result']['res'])
+               //form.reset();
+            }
+         });
+      } 
+      else {
+         alert('Заполните поля корректно!')
+      }
+   }
+
+   async function formSend2() {
+      let error = formValidate2(form2);
+
+      let formData = new FormData(form2);
+
+      if(error === 0) {
+         fetch('/vendor/signup.php', {
+            method: 'POST',
+            body: formData
+         }).then(response => response.json())
+         .then((json) => {
+            console.log(json['result'])
+            alert(json['result']['res'])
+            //form2.reset();
          });
       } 
       else {
@@ -27,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
    function formValidate(form) {
       let error = 0;
-      let formReq = document.querySelectorAll('._req');
+      let formReq = document.querySelectorAll('._req1');
 
       for(let index = 0; index < formReq.length; index++) {
          const input = formReq[index]
@@ -56,13 +88,30 @@ document.addEventListener('DOMContentLoaded', function() {
       return error
    }
 
+   function formValidate2(form) {
+      let error = 0;
+      let formReq = document.querySelectorAll('._req2');
+
+      for(let index = 0; index < formReq.length; index++) {
+         const input = formReq[index]
+         formRemoveError(input)
+
+         if(input.value === '') {
+            formAddError(input)
+            error++
+         }
+      }
+
+      return error
+   }
+
    function formAddError(input) {
-      input.parentElement.classList.add('_error')
+      input.parentElement.classList.add('error')
       input.classList.add('error')
    }
 
    function formRemoveError(input) {
-      input.parentElement.classList.remove('_error')
+      input.parentElement.classList.remove('error')
       input.classList.remove('error')
    }
 
@@ -73,6 +122,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
    //функция проверки пароля
    function password(input) {
-      return !/^[0-9a-zA-Z!@#$%^&*]*$/.test(input.value);
+      return !/^[0-9a-zA-Z!@#$%^&*]+$/.test(input.value);
    }
 })
