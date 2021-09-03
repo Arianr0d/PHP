@@ -10,8 +10,14 @@ $password = $_POST['password'];
 $password = md5($password);
 
 // запрос на добавление в бд нового пользователя
-mysqli_query($connect, "INSERT INTO `users` (`ID`, `Login`, `Password`) VALUES (NULL, '$login', '$password')");
+$result = mysqli_query($connect, "INSERT INTO `users` (`ID`, `Login`, `Password`) VALUES (NULL, '$login', '$password')");
 
 // присвоение сессии (глабальной переменной) для вывода сообщения на форме
 $_SESSION['message'] = 'Регистрация прошла успешно!';
-header('Location: ../index.php');
+
+$response = array();
+$response['status'] = "ok";
+
+//header('Location: ../index.php');
+header('Content-type: application/json');
+echo json_encode($response);

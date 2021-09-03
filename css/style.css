@@ -1,35 +1,54 @@
+* {
+  margin: 0;
+  padding: 0 auto;
+}
+
 body {
   background: black;
   -webkit-background-size: cover;
   background-attachment: fixed;
   background-size: cover;
   margin: 0;
+  position: fixed;
 }
 
 .intro {
   max-height: 100vh;
   overflow: hidden;
+  z-index: -100;
 }
 
 .video {
-  position: relative;
+  position: fixed;
   padding-bottom: 56.25%;
 }
 
 .video_media {
   width: 100%;
   height: auto;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
 }
 
-.form {
+.form_wrapper {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  z-index: 4;
+}
+
+.form_1 {
   border-radius: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  display: inline-block;
+  margin: 25vh 0 25vh 20vw;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.form_2 {
+  border-radius: 10px;
+  display: inline-block;
+  margin: 25vh 5vw;
   background: rgba(0, 0, 0, 0.65);
 }
 
@@ -97,7 +116,7 @@ body {
   border: 1px solid white;
 }
 
-.group button[type="submit"]:focus {
+.group button[type="submit"]:active {
   background: #aa4b6b;
   border-radius: 0;
   border: 1px solid white;
