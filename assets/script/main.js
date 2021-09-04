@@ -10,14 +10,21 @@ document.addEventListener('DOMContentLoaded', function() {
       let formData = new FormData(form)
 
       if(error == 0) {
-         fetch('../../ajax.php', {
+         fetch('../../vendor/ajax.php', {
             method: 'POST',
             body: formData
          }).then(response => response.json())
          .then((json) => {
-            if(json['status'] == "ok") {
-               alert('fwfwefewf wfewfew')
+            if(json['message'] == 'ok') {
+
+               document.getElementById('info_metro').hidden = false
                
+               document.getElementById('adress').innerText = json['address']
+               document.getElementById('coord').innerText = json['coordinat']
+               document.getElementById('nrst_metro').innerText = json['metroAddress']
+            }
+            else {
+               alert(json['message'])
             }
          })
       }
@@ -33,17 +40,9 @@ document.addEventListener('DOMContentLoaded', function() {
       const input = formReq[0]
       formRemoveError(input)
 
-      if(input.classList.contains('_address')) {
-         if(addressTest(input)) {
-            formAddError(input)
-            error++
-         }
-      }
-      else {
-         if(input.value === '') {
-            formAddError(input)
-            error++
-         }
+      if(input.value === '') {
+         formAddError(input)
+         error++
       }
 
       return error
@@ -57,9 +56,5 @@ document.addEventListener('DOMContentLoaded', function() {
    function formRemoveError(input) {
       input.parentElement.classList.remove('error')
       input.classList.remove('error')
-   }
-
-   function addressTest(input) {
-      return !/^[0-9a-zA-Z]+$/.test(input.value);
    }
 })
