@@ -1,10 +1,12 @@
+"use script"
+
 document.addEventListener('DOMContentLoaded', function() {
    const form = document.getElementById('form')
    var btn = document.getElementById('btn')
 
    btn.onclick = formSend;
 
-   async function formSend() {
+   function formSend() {
 
       let error = formValidate()
       let formData = new FormData(form)
@@ -37,12 +39,14 @@ document.addEventListener('DOMContentLoaded', function() {
       let error = 0
       let formReq = document.querySelectorAll('._req');
 
-      const input = formReq[0]
-      formRemoveError(input)
+      for(let index = 0; index < formReq.length; index++) {
+         const input = formReq[index]
+         formRemoveError(input)
 
-      if(input.value === '') {
-         formAddError(input)
-         error++
+         if(input.value === '') {
+            formAddError(input)
+            error++
+         }
       }
 
       return error

@@ -27,6 +27,7 @@ body {
 .form {
   border-radius: 10px;
   position: absolute;
+  width: 35vw;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -81,6 +82,7 @@ body {
   text-align: left;
   padding: 0px 10px 20px 10px;
   margin-left: 3vw;
+  margin-right: 3vw;
   width: 80%;
   color: white;
   font-size: 25px;
@@ -98,9 +100,10 @@ body {
   margin: 10px 20px;
   display: inline-block;
   color: rgb(161, 187, 206);
+  word-wrap: break-word;
 }
 
 .error {
-   border: 1px solid red;
-   box-shadow: 0 0 5px #c84c4c;
- } 
+  border: 1px solid red;
+  box-shadow: 0 0 5px #c84c4c;
+}

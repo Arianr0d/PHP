@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
    <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="/assets/style.css">
    <title>REST</title>
@@ -14,27 +13,29 @@
       </div>
    </div>
 
-   <form id="form" action="#" class="form">
+   <form id="form" method="POST" class="form">
       <div class="group">
-         <input type="text" class="inp inp_form _req _address" name="address" placeholder="Введите адрес">
-         <button type="submit" class="btn">
+         <input type="text" class="inp inp_form _req _address" name="address" placeholder="Введите адрес" value="Москва ул Льва Толстого">
+         <button id="btn" type="button" class="btn">
             Найти
          </button>
       </div>
       <div id="info_metro" class="group_after" hidden>
          <div>
             <h5 class="info">Структурированный адрес: </h5>
-            <h5 id="adress" class="info_data">fwfwfe</h5>
+            <h5 id="adress" class="info_data"></h5>
          </div>
          <div>
             <h5 class="info">Координаты метро: </h5>
-            <h5 id="coord" class="info_data">fwfew</h5>
+            <h5 id="coord" class="info_data"></h5>
          </div>
          <div>
             <h5 class="info">Ближайшее метро: </h5>
-            <h5 id="nrst_metro" class="info_data">ewfwewegg</h5>
+            <h5 id="nrst_metro" class="info_data"></h5>
          </div>
       </div>
    </form>
+
+   <script src="assets/script/main.js"></script>
 </body>
 </html>
