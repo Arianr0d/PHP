@@ -1,0 +1,19 @@
+- Принципы REST api
+- Работа с REST api
+
+https://habr.com/post/38730/
+https://ru.wikipedia.org/wiki/REST
+http://student.webcamp.com.ua/rest_student/rest101
+http://student.webcamp.com.ua/rest_student/uri
+https://itvdn.com/ru/blog/article/rest-api-18
+https://eax.me/rest/
+______________________________________________________________
+
+Создать микросервис - одностраничный проект, который будет работать только с API сервиса Геокодер Яндекс.Карт (https://tech.yandex.ru/maps/doc/geocoder/desc/concepts/About-docpage/) 
+
+На входе строка адреса. 
+На выходе: 1) структурированный адрес 2) координаты 3) ближайшее метро. 
+
+Работать с API предпочтительно на стороне бекенда используя ajax-запросы
+
+Запрещается использовать библиотеки (SDK) для работы с конкретными сервисами, реализовывать запросы стандартными средствами.
